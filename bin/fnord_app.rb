@@ -48,7 +48,7 @@ gauge :daily_10_min,
   :title => "Скорость локального обновления"
 
 # on every event like { _type: 'fps' }
-event(:performance) do
+event(:performance_vk) do
   [:fps, :memory, :render, :iframe, :daily].each do |t|
     incr "#{t}_10_min".to_sym, data[t] if data[t]
   end
@@ -60,7 +60,7 @@ end
   "Average FPS" => :fps_10_min, 
   "Average memory" => :memory_10_min, 
   "Average render" => :render_10_min,
-  "Average iframe" => :daily_10_min,  
+  "Average iframe" => :iframe_10_min,  
   "Average local update" => :daily_10_min
 }.each do |name, gauge|
   widget 'Performance Stats', {
